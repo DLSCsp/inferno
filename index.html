@@ -3,18 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Me preencha</title>
+    <title>Pier della Vigna</title>
     <link rel="stylesheet" href="index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 </head>
-<body>
-    
-<div class="div1">
-    <p class="inv"><center>Português</center></p>
 
-    <img src="aaaaa.png" alt="firstletters" class="img">
+<script>
+    function togglePasswordVisibility() {
+      var passwordInput = document.getElementById("senha");
+      var passwordToggle = document.getElementById("password-toggle");
+  
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        passwordToggle.textContent = "Ocultar senha";
+      } else {
+        passwordInput.type = "password";
+        passwordToggle.textContent = "Exibir senha";
+      }
+    }
+
+    function verificarSenha() {
+      var senhaDigitada = document.getElementById("senha").value;
+      var senhaDigitadaMD5 = CryptoJS.MD5(senhaDigitada).toString();
+      var senhaCorreta = ("fc502396070bff2ff7d60918134c6328").toString();
+      var senhaCorreta2 = ("a0a12edeffd2a5a5b5a38f7f709bb028").toString();
+      var senhaCorreta3 = ("addda7238ae728e806e1db4dddd8704e").toString();
+      var senhaCorreta4 = ("8d5cf58e0188d9090369cce9e5753933").toString();
+
+      if (senhaDigitadaMD5 === senhaCorreta, senhaCorreta2, senhaCorreta3, senhaCorreta4) {
+        window.location.href = "next.html";
+      } else {
+        alert("Senha incorreta! Lembre-se de colocar os espaços ou letras maiúsculas.");
+      }
+      
+      return false;
+    }
+
+</script>
+
+<body>
+
+<div class="container">
+
+    <img class="img1" src="o-inferno-divina-comedia.png" alt="img1">
+
 </div>
-<p><center>iamgod</center></p>
-<p><center>ANTYDKG</center></p>
+
+<div class="container2">
+
+    <p><center>Guardião</center></p>
+
+    <form class="form" onsubmit="return verificarSenha()">
+        <label class="label" for="senha"></label>
+        <input placeholder="Digite a senha" class="camposenha" type="password" id="senha" required>
+        <span id="password-toggle" class="password-toggle" onclick="togglePasswordVisibility()">Exibir senha</span>
+        <br>
+        <input class="botão" type="submit" value="Verificar">
+      </form>
+</div>
 
 </body>
+
 </html>
